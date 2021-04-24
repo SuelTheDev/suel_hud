@@ -5,28 +5,27 @@ body,
 #hud {
   margin: 0;
   padding: 0;
-}
-
-body {
-  background: url("https://img.gta5-mods.com/q75/images/fivereborn/9518dd-unknown2%20(1).png");
-  background-size: cover;
+  background: transparent;
 }
 
 #hud {
-  width: 220px;
+  width: 200px;
   background: rgba(0, 0, 0, 0.329);
   position: absolute;
-  bottom: 16px;
+  bottom: 8px;
   right: 16px;
-  zoom: 1.2;
   border-radius: 10px;
+  /* display: none; */
+  /* height: 80px; */
+  /* padding-bottom: 8px; */
 }
 
 .bar {
   width: calc(100% - 1px);
-  background: rgb(255, 255, 255);
+  background: rgba(0, 0, 0, 0.322);
   border-radius: 25px;
   padding: 1px;
+  height: 10px;
 }
 
 .bar-inside {
@@ -43,30 +42,30 @@ body {
 .bar-vida-inside {
   background: linear-gradient(
     297deg,
-    rgba(251, 1, 1, 0.12648809523809523) 7%,
-    rgba(182, 21, 7, 0.9416141456582633) 90%
+    rgb(255, 0, 0) 7%,
+    rgb(241, 54, 54) 90%
   );
 }
 
 .bar-colete-inside {
   background: linear-gradient(
     297deg,
-    rgba(17, 0, 255, 0.126) 7%,
-    rgba(82, 165, 233, 0.942) 90%
+    rgb(17, 0, 255) 7%,
+    rgb(0, 174, 255) 90%
   );
 }
 .bar-sede-inside {
   background: linear-gradient(
     297deg,
-    rgb(179, 6, 185) 7%,
-    rgba(193, 112, 240, 0.942) 90%
+    rgb(255, 0, 157) 7%,
+    rgb(162, 0, 255) 90%
   );
 }
 .bar-fome-inside {
   background: linear-gradient(
     297deg,
-    rgb(255, 238, 0) 7%,
-    rgba(235, 181, 82, 0.942) 90%
+    rgb(255, 145, 0) 7%,
+    rgb(255, 0, 64) 90%
   );
 }
 
@@ -112,12 +111,13 @@ i {
 }
 
 .velocimentro-container{
+    position: absolute;
+    bottom: 0px;
+    left: -52%;
+    z-index: 2;
     width: 100px;
     height: 100px;
     background: rgba(0, 0, 0, 0.329);
-    position: absolute;
-    right: 105%;
-    top: -1%;
     border-top-left-radius: 50%;
     border-top-right-radius: 50%;
     border-bottom-left-radius: 50%;
@@ -173,6 +173,18 @@ i {
     float: right;
 }
 
+#c-icon.normal {
+  color: rgb(44, 65, 44);
+  filter: drop-shadow(1px 0 0.9rem yellow);
+}
+
+#c-icon.alerta {
+  color: orangered
+}
+
+#c-icon.critico {
+  color: red;
+}
 
 .icon-container{
     position: absolute;

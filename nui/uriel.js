@@ -17,42 +17,49 @@ const radioText = $('#radio-text');
 
 $(() => {
 
-  //inicializa os controles
-  // hud = $('#hud');
-  // velocimetro = $('.velocimentro-container');
-  // velocidade = $('#velocidade');
-  // farol = $('#farol');
-  // cinto = $('#cinto');
-  // comb_icon = $('#c-icon');
-  // comb_bar = $('#comb_bar');
-  // logo = $('.logo-container img');
-  // vida = $('.bar-vida-inside');
-  // colete = $('.bar-colete-inside');
-  // fome = $('.bar-fome-inside');
-  // sede = $('.bar-sede-inside');
-  // mic = $('#mic-icon');
-  // micText = $('#mic-text');
-  // radio = $('#radio-icon');
-  // radioText = $('#radio-text');
+  //inicializa valores padrão
+  atualizarEstadoMic(1);
 
-  setInterval(() => {
-    atualizarVida(getRandomIntInclusive(0, 100));
-    atualizarColete(getRandomIntInclusive(0, 100));
-    atualizarFome(getRandomIntInclusive(0, 100));
-    atualizarSede(getRandomIntInclusive(0, 100));
-    atualizarEstadoMic(getRandomIntInclusive(0, 2));
-    atualizarEstadoRadio(getRandomIntInclusive(0, 1), "200");
-    // atualizarVida(100);
-    // atualizarColete(100);
-    // atualizarFome(100);
-    // atualizarSede(100);
-  }, 500);
+  window.addEventListener('message', (ev)=> {
+    let data = ev.data;
+    if (data.show_hud){
+       atualizarVida(data.hud.vida);
+       atualizarColete(data.hud.colete);
+       atualizarFome(data.hud.fome);
+       atualizarSede(data.hud.sede);
+       mostrarHud(true);
+      if (data.show_car){
+        mostrarVelocimentro(true);
+        atualizarVelocidade(data.car.velocidade);
+        atualizarCinto(data.car.cinto);
+        atualizarCombustivel(data.car.gas);
+        atualizarFarol(data.car.farol);
+      } else {
+        mostrarVelocimentro(false);
+      }
+      mostrarHud(true);
+    } else {
+      mostrarHud(false);
+    }
+  });
 });
 
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+const mostrarHud = (value) => {
+  value
+  ? (() => {
+      hud.fadeIn(500);
+    })()
+  : (() => {
+      hud.fadeOut(500);
+      velocimetro.fadeOut(500)
+    })();
 }
 
 const atualizarVida = (value) => {
@@ -109,7 +116,7 @@ const atualizarEstadoRadio = (value, radioFreq) => {
 
 //carro
 const atualizarVelocidade = (value) => {
-  velocidade.text(`${value}`);
+  velocidade.text(`${Math.trunc(value)}`);
 };
 
 const atualizarCinto = (value) => {
@@ -124,7 +131,22 @@ const atualizarCinto = (value) => {
 
 const atualizarFarol = (value) => {};
 
-const atualizarCombustivel = (value) => {};
+const atualizarCombustivel = (value) => {
+  comb_bar.css('width', `${value}%`);
+  if (value>=50){
+    comb_icon.removeClass('critico');
+    comb_icon.removeClass('alerta');
+    comb_icon.addClass('normal');
+  }else if (value>=20){
+    comb_icon.removeClass('critico');
+    comb_icon.removeClass('normal');
+    comb_icon.addClass('alerta');
+  } else {
+    comb_icon.removeClass('normal');
+    comb_icon.removeClass('alerta');
+    comb_icon.addClass('critico');
+  }
+};
 
 const mostrarVelocimentro = (bool) => {
   bool
