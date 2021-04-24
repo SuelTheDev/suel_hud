@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUD</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://kit-pro.fontawesome.com/releases/v5.15.3/css/pro.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="castiel.css">
+</head>
+
+<body>
+    <!-- <img src="hud.png" alt="" srcset=""> -->
+    <div id="hud">
+        <div class="container-inside d-flex flex-column p-2">
+            <div class="velocimentro-container">
+
+                <div class="velocidade-container d-flex flex-column">
+                    <span id="velocidade">999</span>
+                    <span>KM/h</span>
+                </div>
+
+                <div class="icon-container d-flex flex-column justify-content-end align-items-center ms-2">
+                    <i id="farol" class="fas fa-lightbulb-on"></i>
+                    <i id="cinto" class="fad fa-bacon mt-1"></i>                  
+                    <i id="c-icon" class="fas fa-gas-pump mt-1"></i>
+                </div>
+
+                <div class="combustivel-container me-2">
+                    <div class="bar-f-container">
+                        <div id="comb_bar" class="bar-f-inside"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- container info + image -->
+            <div class="container-info d-flex flex-nowrap flex-row justify-content-between">
+                <div class="container-status w-100">
+
+                    <div class="info-container d-flex mb-1">
+                        <i class="fad fa-heart me-1"></i>
+                        <div class="bar">
+                            <div class="bar-inside bar-vida-inside"></div>
+                        </div>
+                    </div>
+
+                    <div class="info-container d-flex mb-1">
+                        <i class="fad fa-vest me-1"></i>
+                        <div class="bar">
+                            <div class="bar-inside bar-colete-inside"></div>
+                        </div>
+                    </div>
+
+                    <div class="fome-sede-container d-flex flex-row">
+
+                        <div class="info-container d-flex w-50 me-1">
+                            <i class="fal fa-french-fries me-1"></i>
+                            <div class="bar">
+                                <div class="bar-inside bar-fome-inside"></div>
+                            </div>
+                        </div>
+
+                        <div class="info-container d-flex w-50 m-0">
+                            <i class="fas fa-beer me-1"></i>
+                            <div class="bar">
+                                <div class="bar-inside bar-sede-inside"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="logo-container">
+                    <img src="logo.png" class="w-100 align-self-center">
+                </div>
+            </div>
+            <!-- container do radio-->
+            <div class="info-radio-mic-container d-flex justify-content-between align-items-center pb-1 flex-row">
+                <div class="mic-container d-flex me-2">
+                    <i id="mic-icon" class="fas fa-microphone pe-2 me-0"></i>
+                    <span id="mic-text" class="d-flex justify-content-center align-items-center">sussurrando</span>
+                </div>
+                <div class="radio-container d-flex me-2">
+                    <i id="radio-icon" class="fas fa-walkie-talkie pe-2 me-0"></i>
+                    <span id="radio-text" class="d-flex justify-content-center align-items-center">0 Mhz</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="uriel.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+<!-- <div class="logo-container d-flex justify-content-center flex-column">
+    <img src="logo.png" class="w-100 align-self-md-center">
+</div> -->
